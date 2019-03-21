@@ -6,9 +6,9 @@
  * https://leetcode.com/problems/merge-sorted-array/description/
  *
  * algorithms
- * Easy (35.02%)
- * Total Accepted:    336.7K
- * Total Submissions: 961.6K
+ * Easy (35.00%)
+ * Total Accepted:    336K
+ * Total Submissions: 960.1K
  * Testcase Example:  '[1,2,3,0,0,0]\n3\n[2,5,6]\n3'
  *
  * Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as
@@ -42,34 +42,24 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-  // if (m <= 0) return (nums1 = nums2)
-  // if (n <= 0) return
-
-  nums1.splice(m)
-  nums2.splice(n)
-
+  if (m === 0) {
+    nums1 = nums2
+    return
+  }
+  if (n === 0) return
+  var total = nums1.length + nums2.length
   var pos = 0
-
-  for (var i = 0; i < nums2.length; i++) {
-    if (!nums1.length) {
-      nums1[i] = nums2[i]
-      continue
-    }
-
+  var limit = m
+  for (var i = 0; i < n; i++) {
     for (var j = pos; j < nums1.length; j++) {
-      if (nums2[i] < nums1[j]) {
-        pos = j
-        nums1.splice(j, 0, nums2[i])
-        break
-      } else if (
-        (nums2[i] >= nums1[j] && nums2[i] < nums1[j + 1]) ||
-        (j === nums1.length - 1)
-      ) {
-        pos = j + 1
+      if (nums2[i] >= nums1[j] && (nums2[i] < nums1[j + 1] || j >= limit - 1)) {
         nums1.splice(j + 1, 0, nums2[i])
+        pos = j + 1 
+        limit++
         break
       }
     }
   }
+  nums1.splice(m + n, total - m - n)
 };
 

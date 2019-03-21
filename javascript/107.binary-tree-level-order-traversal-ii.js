@@ -6,9 +6,9 @@
  * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
  *
  * algorithms
- * Easy (45.86%)
- * Total Accepted:    212.9K
- * Total Submissions: 464.2K
+ * Easy (45.87%)
+ * Total Accepted:    213.1K
+ * Total Submissions: 464.5K
  * Testcase Example:  '[3,9,20,null,null,15,7]'
  *
  * Given a binary tree, return the bottom-up level order traversal of its
@@ -48,6 +48,6 @@
  * @return {number[][]}
  */
 var levelOrderBottom = function(root) {
-  var result = []
+    
 };
 
